@@ -40,9 +40,11 @@ struct ListNode *detectCycle(struct ListNode *head) {
         slow = slow->next;
         if(fast == slow)
         {
-            //快指针追上慢指针
+            //快指针与慢指针相遇
             while(fast != head)
             {
+				//fast从fast与slow的相遇点出发，head从头出发
+				//相遇位置即入环节点
                 fast = fast->next;
                 head = head->next;
             }

@@ -33,16 +33,11 @@ bool hasCycle(struct ListNode *head) {
     //快慢指针
     struct ListNode* fast = head;
     struct ListNode* slow = head;
-    int step = 0;
-    while(fast->next)
+    while(fast && fast->next)
     {
-        fast = fast->next;
-        ++step;
-        if(step % 2 == 0)
-        {
-            //快指针每移动2步，慢指针移动1步
-            slow = slow->next;
-        }
+        //快指针每移动2步，慢指针移动1步
+        fast = fast->next->next;
+        slow = slow->next;
         if(fast == slow)
             //快指针追上慢指针
             return true;
